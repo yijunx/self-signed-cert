@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./app
+    command: python app.py
+    ports:
+      - 5000:5000
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 443:443
+    depends_on:
+      - web
+    volumes:
+      - ./certs:/etc/my_certs
