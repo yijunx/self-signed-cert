@@ -1,7 +1,8 @@
-import requests
+import requests, os
 
 
-r = requests.get("https://YOUR_DOMAIN_NAME")
-r.raise_for_status()
-print(r.text)
+os.environ["REQUESTS_CA_BUNDLE"] = "certs/ssl.pem"
+r = requests.get("https://cool.domain.yolo")
+assert r.status_code == 200
+
 
